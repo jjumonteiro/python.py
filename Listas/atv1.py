@@ -34,10 +34,33 @@ ind = produtos.index(busca)
 produtos.remove(busca)
 estoque.remove(estoque[ind])
 min_estoque.remove(min_estoque[ind])
+print(f'O produto {busca} foi removido')
 print(produtos, estoque, min_estoque)
 
+pedidos = []
+while True:
+    ped_prod = input('Digite o produto ue deseja comprar:')
+    ped_qnt = int(input('Digite a quantidade de produtos:'))
+    pedidos.append([ped_prod, ped_qnt])
+    repete = ('Deseja continuar? R:')
+    if repete.upper() == 'Não':
+        break
+print(pedidos)
 
+while True:
+    ped_prod = input('Digite o produto que deseja comprar:')
+    ped_qnt = int(input('Digite a quantidade de produtos:'))
+    pedidos.append([ped_prod, ped_qnt])
+    repete = input('Deseja continuar? S/N R:')
+    if repete.upper() == 'N':
+        break
+print(pedidos)
 
+for itens in pedidos:
+    if itens[0] not in produtos:
+        print(f'Produto {itens[0]} não tem')
+    elif itens[1] < estoque[produtos.index(itens[0])]:
+        print('Saldo insuficiente!')
 
 
 
